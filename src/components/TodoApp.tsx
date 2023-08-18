@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Todo } from "../models/Todo";
 import { v4 as uuidv4 } from "uuid";
+import { TaskList } from "./TaskList";
 
 export const TodoApp = () => {
   const [todos, setTodos] = useState<Todo[]>([
@@ -9,9 +10,7 @@ export const TodoApp = () => {
 
   return (
     <>
-      {todos.map((todo) => (
-        <div key={todo.id}>{todo.id}</div>
-      ))}
+      <TaskList todos={todos} />
     </>
   );
 };
