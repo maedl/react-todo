@@ -15,10 +15,20 @@ export const TodoApp = () => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  const handleToggle = (id: string) => {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id == id) {
+          return { ...todo, done: !todo.done };
+        } else return todo;
+      })
+    );
+  };
+
   return (
     <>
       <AddTodoForm addTodo={addTodo} />
-      <TaskList todos={todos} remove={handleRemove} />
+      <TaskList todos={todos} remove={handleRemove} toggle={handleToggle} />
     </>
   );
 };
